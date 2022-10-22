@@ -1,13 +1,11 @@
 <?php
 
-$dsn = "mysql:host=localhost;dbname=[mydb]";
-$user = "[user12]";
-$passwd = "[12user]";
+$dsn = "mysql:host=localhost;dbname=pdc10_classes";
+$user = "user123";
+$passwd = "passwd";
 
 $pdo = new PDO($dsn, $user, $passwd);
 
 $stm = $pdo->query("SELECT VERSION()");
 
 $version = $stm->fetch();
-
-//echo $version[0] . PHP_EOL;
