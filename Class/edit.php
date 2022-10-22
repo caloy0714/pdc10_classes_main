@@ -1,8 +1,9 @@
 <?php
 
 include "init.php";
+use classes;
 
-$template = $mustache->loadTemplate('template/Class/edit.mustache');
+$template = $mustache->loadTemplate('templates/Class/edit.mustache');
 echo $template->render();
 
 try {

@@ -9,7 +9,7 @@ class Teacher
 	protected $last_name;
 	protected $email;
     protected $employee_number;
-    protected $code;
+    protected $class_code;
 
 	// Database Connection Object
 	    protected $connection;

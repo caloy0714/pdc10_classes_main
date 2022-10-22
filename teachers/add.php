@@ -4,7 +4,7 @@ include ("init.php");
 use Teacher;
 
 
-$template = $mustache->loadTemplate('teacher/add.mustache');
+$template = $mustache->loadTemplate('templates/teacher/add');
 echo $template->render();
 
 try {
