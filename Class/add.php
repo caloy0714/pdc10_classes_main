@@ -9,7 +9,7 @@ echo $template->render();
 
 try {
     if (isset($_POST['name'])) {
-        $addClasses = new Classes($_POST['name'], $_POST['description'], $_POST['class_code']);
+        $addClasses = new Classes($_POST['first_name'],$_POST['last_name'], $_POST['description'], $_POST['assigned_teacher'], $_POST['class_code']);
         $addClasses->setConnection($connection);
         $addClasses->saveClasses();
         header('index.php');
@@ -19,3 +19,4 @@ try {
 catch (Exception $e) {
     error_log($e->getMessage());
 }
+

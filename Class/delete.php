@@ -10,3 +10,4 @@ $student->getById($id);
 $student->delete();
 header("index.php");
 exit();
+

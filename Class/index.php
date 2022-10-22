@@ -9,4 +9,4 @@ $all_classes = $class->getAll();
 
 $template = $mustache->loadTemplate('classes/index.mustache');
 //all classes
-echo $template->render(compact('classes'));
+echo $template->render(compact('list_classes'));

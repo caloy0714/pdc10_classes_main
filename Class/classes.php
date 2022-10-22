@@ -6,7 +6,8 @@ use \PDO;
 class classes
 {
 	protected $id;
-	protected $name;
+	protected $first_name;
+	protected $last_name;
 	protected $code;
 	protected $description;
     protected $assigned_teacher;
@@ -31,7 +32,12 @@ class classes
 		return $this->id;
 	}
 
-	public function getName()
+	public function getFirstName()
+	{
+		return $this->name;
+	}
+
+	public function getLastName()
 	{
 		return $this->name;
 	}

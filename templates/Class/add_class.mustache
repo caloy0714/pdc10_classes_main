@@ -15,8 +15,7 @@
                     <h1>Add New Class</h1>
                         </div>
             <div class="card-body  fs-5 font-monospace">
-            <form action="/save-new-locker" method="POST">
-                @csrf
+            <form action="/add_class" method="POST">
                 <div class="form-group">
                     <label>Name</label>
                     <input type="text" class="form-control" name="" required>
@@ -27,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label>Class Code</label>
-                    <input type="test" class="form-control" name="" required>
+                    <input type="text" class="form-control" name="" required>
                 </div>
                 </br>
                 <a href="/lockers"><button type="button" class="btn btn-secondary">

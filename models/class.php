@@ -15,5 +15,5 @@ $classes = [
 
 ];
 
-$template = $mustache->loadTemplate('classes');
-echo $template->render(compact('classes'));
+$template = $mustache->loadTemplate('template/Classes/index');
+echo $template->render(compact('list_classes'));
