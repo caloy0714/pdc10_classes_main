@@ -4,10 +4,10 @@ include ("init.php");
 use ClassRoster;
 
 $id = $_GET['id'];
-$student = new ClasseRoster('');
-$student->setConnection($connection);
-$student->getById($id);
-$student->delete();
+$roster = new ClasseRoster('');
+$roster->setConnection($connection);
+$roster->getById($id);
+$roster->delete();
 header("index.php");
 exit();
 
