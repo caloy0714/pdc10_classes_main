@@ -12,14 +12,22 @@ class classes
     protected $code;
 
 	// Database Connection Object
-	    //protected $connection;
+	    protected $connection;
 
-/*  public function __construct()
-	{
-		$this->task = $task;
-		$this->is_completed = $is_completed;
-	}
-*/
+		public function __construct(
+			$first_name = null, 
+			$last_name = null, 
+			$email = null, 
+			$contact_number = null, 
+			$employee_number = null)
+		{
+			$this->first_name = $first_name;
+			$this->last_name = $last_name;
+			$this->email = $email;
+			$this->contact_number = $contact_number;
+			$this->employee_number = $employee_number;
+		}
+
 	public function getId()
 	{
 		return $this->id;
@@ -45,9 +53,9 @@ class classes
 		return $this->description;
 	}
 
-    public function getAssignedTeacher($teacher_id)
+    public function getEmployeeNumber()
 	{
-		return $this->teacher_id;
+		return $this->employee_number;
 	}
 
 	public function getById($id)
@@ -58,13 +66,13 @@ class classes
 			$statement->execute([
 				':id' => $id
 			]);
-
 			$row = $statement->fetch();
 			$this->id = $row['id'];
-			$this->name = $row['name'];
-			$this->code = $row['code'];
-			$this->description = $row['description'];
-			$this->assigned_teacher = $row['assigned_teacher'];
+			$this->first_name= $row['first_name'];
+			$this->last_name = $row['last_name'];
+			$this->contact_number = $row['contact_number'];
+			$this->email = $row['email'];
+			$this->employee_number = $row['employee_number'];
 
 		} catch (Exception $e) {
 			error_log($e->getMessage());
@@ -76,16 +84,18 @@ class classes
 		$this->connection = $connection;
 	}
 
-	public function add_class()
+	public function addTeacher()
 	{
 		try {
-			$sql = "INSERT INTO pdc10_classes SET name=:name, description=:description, code=:code";
+			$sql = "INSERT INTO teachers SET first_name=:first_name, last_name=:last_name, email=:email, contact_number=:contact_number, employee_number=:employee_number";
 			$statement = $this->connection->prepare($sql);
 
 			return $statement->execute([
-				':name' => $this->getName(),
-				':description' => $this->getDescription(),
-				':code' => $this->getCode(),
+				':first_name' => $this->getFirstName(),
+				':last_name' => $this->getLastName(),
+                ':email'=> $this->getEmail(),
+                ':contact_number'=> $this->getContactNumber(),
+                ':employee_number' => $this->getEmployeeNumber()
 			]);
 
 		} catch (Exception $e) {
@@ -93,23 +103,30 @@ class classes
 		}
 	}
 
-	public function update($name, $description, $code)
+
+	public function update($first_name, $last_name, $email, $contact_number, $employee_number)
 	{
 		try {
-			$sql = 'UPDATE pdc10_classes SET name=?, description=?, code=? WHERE id=?';
+			$sql = 'UPDATE teachers SET first_name=?, last_name=?, email=?, contact_number=?, employee_number=? WHERE id = ?';
 			$statement = $this->connection->prepare($sql);
 			$statement->execute([
-				$name,
-				$description,
-				$code,
-				$this->getId()
+				$first_name,
+				$last_name,
+                $email,
+				$contact_number,
+				$employee_number,
+                $this->getID()
+
 			]);
-			$this->name = $name;
-			$this->description = $description;
-			$this->name = $code;
+			$this->first_name = $first_name;
+			$this->last_name = $last_name;
+			$this->email = $email;
+			$this->contact_number = $contact_number;
+			$this->employee_number = $employee_number;
 		} catch (Exception $e) {
 			error_log($e->getMessage());
 		}
+        
 	}
 
 	public function delete()
