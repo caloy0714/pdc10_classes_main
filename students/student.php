@@ -1,25 +1,36 @@
 <?php
-namespace classes;
+namespace Student;
 use \PDO;
 
-class classes
+class Student
 {
 	protected $id;
 	protected $first_name;
 	protected $last_name;
 	protected $email;
     protected $contact_number;
-    protected $code;
+    protected $class_code;
 
-	// Database Connection Object
-	    //protected $connection;
+	//Database Connection Object
+	    protected $connection;
 
-/*  public function __construct()
+  	public function __construct(
+		$first_name = null, 
+		$last_name = null,
+		$email = null, 
+		$contact_number = null, 
+		$class_code = null
+	)
 	{
-		$this->task = $task;
-		$this->is_completed = $is_completed;
+        $this->first_name = $first_name;
+        $this->last_name = $last_name;
+        $this->class_code = $class_code;
+        $this->email = $email;
+        $this->contact_number = $contact_number;
+
 	}
-*/
+
+
 	public function getId()
 	{
 		return $this->id;
@@ -39,16 +50,17 @@ class classes
 	{
 		return $this->email;
 	}
-    
-    public function getNumber()
+
+	public function getContactNumber()
 	{
-		return $this->description;
+		return $this->contact_number;
+	}
+    
+    public function getClassCode()
+	{
+		return $this->class_code;
 	}
 
-    public function getAssignedTeacher($teacher_id)
-	{
-		return $this->teacher_id;
-	}
 
 	public function getById($id)
 	{
@@ -61,10 +73,11 @@ class classes
 
 			$row = $statement->fetch();
 			$this->id = $row['id'];
-			$this->name = $row['name'];
-			$this->code = $row['code'];
-			$this->description = $row['description'];
-			$this->assigned_teacher = $row['assigned_teacher'];
+			$this->first_name = $row['first_name'];
+			$this->last_name = $row['last_name'];
+			$this->email = $row['email'];
+			$this->class_code = $row['class_code'];
+			$this->contact_number = $row['contact_number'];
 
 		} catch (Exception $e) {
 			error_log($e->getMessage());
@@ -76,16 +89,18 @@ class classes
 		$this->connection = $connection;
 	}
 
-	public function add_class()
+	public function addStudent()
 	{
 		try {
-			$sql = "INSERT INTO pdc10_classes SET name=:name, description=:description, code=:code";
+			$sql = "INSERT INTO students SET first_name=:first_name, last_name=:last_name, email=:email, contact_number=:contact_number, class_code=:class_code";
 			$statement = $this->connection->prepare($sql);
 
 			return $statement->execute([
-				':name' => $this->getName(),
-				':description' => $this->getDescription(),
-				':code' => $this->getCode(),
+				':first_name' => $this->getFirstName(),
+				':last_name' => $this->getLastName(),
+                ':email'=> $this->getEmail(),
+                ':contact_number'=> $this->getContactNumber(),
+                ':class_code'=> $this->getClassCode(),
 			]);
 
 		} catch (Exception $e) {
@@ -93,23 +108,30 @@ class classes
 		}
 	}
 
-	public function update($name, $description, $code)
+
+	public function update($first_name, $last_name, $class_code, $email, $contact_number)
 	{
 		try {
-			$sql = 'UPDATE pdc10_classes SET name=?, description=?, code=? WHERE id=?';
+			$sql = 'UPDATE students SET first_name=?, last_name=?, class_code=?, email=?, contact_number=?WHERE id = ?';
 			$statement = $this->connection->prepare($sql);
 			$statement->execute([
-				$name,
-				$description,
-				$code,
-				$this->getId()
+				$first_name,
+                $last_name,
+				$email,
+				$contact_number,
+				$class_code,
+                $this->getId()
+
 			]);
-			$this->name = $name;
-			$this->description = $description;
-			$this->name = $code;
+			$this->first_name = $first_name;
+			$this->last_name = $last_name;
+			$this->email = $email;
+			$this->contact_number = $contact_number;
+			$this->class_code = $class_code;
 		} catch (Exception $e) {
 			error_log($e->getMessage());
 		}
+        
 	}
 
 	public function delete()

@@ -1,9 +1,10 @@
 <?php
-
+namespace ClassRoster;
 use \PDO;
 
 
-class classes
+
+class ClassRoster
 {
 	protected $id;
 	protected $class_code;

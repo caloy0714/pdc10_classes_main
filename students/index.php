@@ -3,10 +3,10 @@
 include ("init.php");
 use Models\Student;
 
-$student= new Student('', '', '', '', '', '');
+$student= new Student('');
 $student->setConnection($connection);
 $all_students = $student->getAll();
 
-$template = $mustache->loadTemplate('student/index.mustache');
+$template = $mustache->loadTemplate('students/index.mustache');
 //all students
-echo $template->render(compact('all_students'));
+echo $template->render(compact('list_students'));

@@ -1,7 +1,7 @@
 <?php
 
 include ("init.php");
-use Models\Student;
+use Student;
 
 
 $template = $mustache->loadTemplate('student/add.mustache');

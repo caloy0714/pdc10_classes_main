@@ -1,5 +1,5 @@
 <?php
-
+namespace ClassRoster;
 use \PDO;
 
 
@@ -16,12 +16,14 @@ class classes
 	protected $connection;
 	
 	public function __construct(
-		$name = null, 
+		$first_name = null, 
+		$last_name = null, 
 		$code = null, 
 		$description = null, 
 		$teacher_id = null)
 	{
-		$this->name = $name;
+		$this->first_name = $name;
+		$this->last_name = $name;
 		$this->code = $code;
 		$this->description = $description;
 		$this->teacher_id = $teacher_id;
@@ -34,12 +36,12 @@ class classes
 
 	public function getFirstName()
 	{
-		return $this->name;
+		return $this->first_name;
 	}
 
 	public function getLastName()
 	{
-		return $this->name;
+		return $this->last_name;
 	}
 
 	public function getCode()
@@ -68,7 +70,8 @@ class classes
 
 			$row = $statement->fetch();
 			$this->id = $row['id'];
-			$this->name = $row['name'];
+			$this->name = $row['last_name'];
+			$this->name = $row['first_name'];
 			$this->code = $row['code'];
 			$this->description = $row['description'];
 			$this->assigned_teacher = $row['assigned_teacher'];
