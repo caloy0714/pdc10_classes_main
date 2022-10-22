@@ -1,5 +1,5 @@
 <?php
-namespace ClassRoster;
+namespace Class;
 use \PDO;
 
 
