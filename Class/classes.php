@@ -1,8 +1,7 @@
 <?php
 
-namespace teachers;
-namespace classrosters;
 use \PDO;
+
 
 class classes
 {
@@ -13,14 +12,20 @@ class classes
     protected $assigned_teacher;
 
 	// Database Connection Object
-	    //protected $connection;
-
-/*  public function __construct()
+	protected $connection;
+	
+	public function __construct(
+		$name = null, 
+		$code = null, 
+		$description = null, 
+		$teacher_id = null)
 	{
-		$this->task = $task;
-		$this->is_completed = $is_completed;
+		$this->name = $name;
+		$this->code = $code;
+		$this->description = $description;
+		$this->teacher_id = $teacher_id;
 	}
-*/
+
 	public function getId()
 	{
 		return $this->id;
