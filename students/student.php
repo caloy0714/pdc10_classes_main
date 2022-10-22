@@ -9,7 +9,7 @@ class Student
 	protected $last_name;
 	protected $email;
     protected $contact_number;
-    protected $class_code;
+    protected $program;
 
 	//Database Connection Object
 	    protected $connection;
@@ -19,12 +19,12 @@ class Student
 		$last_name = null,
 		$email = null, 
 		$contact_number = null, 
-		$class_code = null
+		$program = null
 	)
 	{
         $this->first_name = $first_name;
         $this->last_name = $last_name;
-        $this->class_code = $class_code;
+        $this->program = $program;
         $this->email = $email;
         $this->contact_number = $contact_number;
 
@@ -56,9 +56,9 @@ class Student
 		return $this->contact_number;
 	}
     
-    public function getClassCode()
+    public function getProgram()
 	{
-		return $this->class_code;
+		return $this->program;
 	}
 
 
@@ -76,7 +76,7 @@ class Student
 			$this->first_name = $row['first_name'];
 			$this->last_name = $row['last_name'];
 			$this->email = $row['email'];
-			$this->class_code = $row['class_code'];
+			$this->program = $row['program'];
 			$this->contact_number = $row['contact_number'];
 
 		} catch (Exception $e) {
@@ -100,7 +100,7 @@ class Student
 				':last_name' => $this->getLastName(),
                 ':email'=> $this->getEmail(),
                 ':contact_number'=> $this->getContactNumber(),
-                ':class_code'=> $this->getClassCode(),
+                ':program'=> $this->getProgram(),
 			]);
 
 		} catch (Exception $e) {
@@ -109,17 +109,17 @@ class Student
 	}
 
 
-	public function update($first_name, $last_name, $class_code, $email, $contact_number)
+	public function update($first_name, $last_name, $program, $email, $contact_number)
 	{
 		try {
-			$sql = 'UPDATE students SET first_name=?, last_name=?, class_code=?, email=?, contact_number=?WHERE id = ?';
+			$sql = 'UPDATE students SET first_name=?, last_name=?, program=?, email=?, contact_number=?WHERE id = ?';
 			$statement = $this->connection->prepare($sql);
 			$statement->execute([
 				$first_name,
                 $last_name,
 				$email,
 				$contact_number,
-				$class_code,
+				$program,
                 $this->getId()
 
 			]);
@@ -127,7 +127,7 @@ class Student
 			$this->last_name = $last_name;
 			$this->email = $email;
 			$this->contact_number = $contact_number;
-			$this->class_code = $class_code;
+			$this->program = $program;
 		} catch (Exception $e) {
 			error_log($e->getMessage());
 		}
