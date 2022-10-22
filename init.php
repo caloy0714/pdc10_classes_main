@@ -4,9 +4,10 @@ include "vendor/autoload.php";
 include "config/database.php";
 
 use app\UsePdo;
-use Models\ClassRecord;
+use Models\Class;
 use Models\Teacher;
 use Models\Student;
+use Models\ClassRoster;
 
 $connObj = new Connection($host, $database, $user, $password);
 $connection = $connObj->connect();
