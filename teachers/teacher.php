@@ -1,14 +1,14 @@
 <?php
-namespace classes;
+namespace Teacher;
 use \PDO;
 
-class classes
+class Teacher
 {
 	protected $id;
 	protected $first_name;
 	protected $last_name;
 	protected $email;
-    protected $contact_number;
+    protected $employee_number;
     protected $code;
 
 	// Database Connection Object
@@ -18,13 +18,13 @@ class classes
 			$first_name = null, 
 			$last_name = null, 
 			$email = null, 
-			$contact_number = null, 
+			$class_code = null, 
 			$employee_number = null)
 		{
 			$this->first_name = $first_name;
 			$this->last_name = $last_name;
 			$this->email = $email;
-			$this->contact_number = $contact_number;
+			$this->class_code = $class_code;
 			$this->employee_number = $employee_number;
 		}
 
@@ -58,6 +58,11 @@ class classes
 		return $this->employee_number;
 	}
 
+	public function getClassCode()
+	{
+		return $this->class_code;
+	}
+
 	public function getById($id)
 	{
 		try {
@@ -70,7 +75,7 @@ class classes
 			$this->id = $row['id'];
 			$this->first_name= $row['first_name'];
 			$this->last_name = $row['last_name'];
-			$this->contact_number = $row['contact_number'];
+			$this->class_code = $row['class_code'];
 			$this->email = $row['email'];
 			$this->employee_number = $row['employee_number'];
 
@@ -87,14 +92,14 @@ class classes
 	public function addTeacher()
 	{
 		try {
-			$sql = "INSERT INTO teachers SET first_name=:first_name, last_name=:last_name, email=:email, contact_number=:contact_number, employee_number=:employee_number";
+			$sql = "INSERT INTO teachers SET first_name=:first_name, last_name=:last_name, email=:email, class_code=:class_code, employee_number=:employee_number";
 			$statement = $this->connection->prepare($sql);
 
 			return $statement->execute([
 				':first_name' => $this->getFirstName(),
 				':last_name' => $this->getLastName(),
                 ':email'=> $this->getEmail(),
-                ':contact_number'=> $this->getContactNumber(),
+                ':contact_number'=> $this->getClassCode(),
                 ':employee_number' => $this->getEmployeeNumber()
 			]);
 
@@ -104,16 +109,16 @@ class classes
 	}
 
 
-	public function update($first_name, $last_name, $email, $contact_number, $employee_number)
+	public function update($first_name, $last_name, $email, $class_code, $employee_number)
 	{
 		try {
-			$sql = 'UPDATE teachers SET first_name=?, last_name=?, email=?, contact_number=?, employee_number=? WHERE id = ?';
+			$sql = 'UPDATE teachers SET first_name=?, last_name=?, email=?, class_code=?, employee_number=? WHERE id = ?';
 			$statement = $this->connection->prepare($sql);
 			$statement->execute([
 				$first_name,
 				$last_name,
                 $email,
-				$contact_number,
+				$class_code,
 				$employee_number,
                 $this->getID()
 
@@ -121,7 +126,7 @@ class classes
 			$this->first_name = $first_name;
 			$this->last_name = $last_name;
 			$this->email = $email;
-			$this->contact_number = $contact_number;
+			$this->class_code = $class_code;
 			$this->employee_number = $employee_number;
 		} catch (Exception $e) {
 			error_log($e->getMessage());

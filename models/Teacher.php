@@ -17,5 +17,5 @@ $teachers = [
 ];
 
 $template = $mustache->loadTemplate('teachers');
-echo $template->render(compact('teachers'));
+echo $template->render(compact('list_teachers'));
 

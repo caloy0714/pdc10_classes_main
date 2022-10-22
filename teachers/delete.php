@@ -1,10 +1,10 @@
 <?php
 
 include ("init.php");
-use ClassRoster;
+use Teacher;
 
 $id = $_GET['id'];
-$roster = new ClassRoster('');
+$roster = new Teacher('');
 $roster->setConnection($connection);
 $roster->getById($id);
 $roster->delete();

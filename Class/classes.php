@@ -6,8 +6,7 @@ use \PDO;
 class classes
 {
 	protected $id;
-	protected $first_name;
-	protected $last_name;
+	protected $name;
 	protected $code;
 	protected $description;
     protected $assigned_teacher;
@@ -34,15 +33,11 @@ class classes
 		return $this->id;
 	}
 
-	public function getFirstName()
+	public function getName()
 	{
 		return $this->first_name;
 	}
 
-	public function getLastName()
-	{
-		return $this->last_name;
-	}
 
 	public function getCode()
 	{
@@ -70,8 +65,7 @@ class classes
 
 			$row = $statement->fetch();
 			$this->id = $row['id'];
-			$this->name = $row['last_name'];
-			$this->name = $row['first_name'];
+			$this->name = $row['name'];
 			$this->code = $row['code'];
 			$this->description = $row['description'];
 			$this->assigned_teacher = $row['assigned_teacher'];
@@ -96,6 +90,7 @@ class classes
 				':name' => $this->getName(),
 				':description' => $this->getDescription(),
 				':code' => $this->getCode(),
+				':assigned_teacher' => $this->getAssignedTeacher(),
 			]);
 
 		} catch (Exception $e) {
@@ -112,11 +107,13 @@ class classes
 				$name,
 				$description,
 				$code,
+				$assigned_teacher,
 				$this->getId()
 			]);
 			$this->name = $name;
 			$this->description = $description;
-			$this->name = $code;
+			$this->code = $code;
+			$this->assigned_teacher = $assigned_teacher;
 		} catch (Exception $e) {
 			error_log($e->getMessage());
 		}

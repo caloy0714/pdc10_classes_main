@@ -1,0 +1,74 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>20</x><y>20</y><w>330</w><h>220</h></coordinates><panel_attributes>Class Roster
+--
+#id: int
+#class_code: int
+#student_number:int
+#enrolled_at: timestamp
+--
++getId():int
++getCode():int
++getStudentNumber():int
++getEnrolledAt():timestamp
++addClass()
++update(student_number, enrolled_at, class_code)
++delete()
++getAll()
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>0</y><w>400</w><h>290</h></coordinates><panel_attributes>Teacher
+--
+#id:int
+#first_name:string
+#last_name:string
+#email:string
+#employee_number:int
+#class_code:int
+--
++getId()int
++getFirstName()string
++getLastName()string
++getEmail()
++getEmployeeNumber()
++getClassCode()
++addTeacher()
++update(first_name, last_name, email, employee_number, class_code)
++delete()
++getAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>320</y><w>380</w><h>300</h></coordinates><panel_attributes>Student
+--
+#id;
+#first_name;
+#last_name;
+#email;
+#contact_number;
+#program;
+--
++getId()int
++getFirstName()
++getLastName()
++getEmail()
++getContactNumber()
++getProgram()
++addStudent()
++update(first_name, last_name, email, contact_number, program)
++getById(id)
++delete()
++getAll()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>430</x><y>340</y><w>330</w><h>300</h></coordinates><panel_attributes>Class
+--
+#id:string
+#name:string
+#code:int
+#description:string
+#assigned_teacher:string
+--
++getId()int
++getName()
++getCode()
++getDescription()
++getAssignedTeacher()
++addClass()
++update(id, name, description, code, assinged_teacher)
++getById(id)
++delete()
++getAll()
+
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>

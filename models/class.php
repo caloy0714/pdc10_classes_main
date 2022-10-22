@@ -7,11 +7,10 @@ $mustache = new Mustache_Engine([
 ]);
 
 $classes = [
-    "first_name",
-    "last_name",
+    "name",
     "description",
     "assigned_teacher",
-    "class_code"
+    "code"
 
 ];
 
