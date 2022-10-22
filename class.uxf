@@ -1,0 +1,66 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>10</x><y>0</y><w>270</w><h>220</h></coordinates><panel_attributes>Class Records
+--
+#id: int
+#Name: string
+#Description: string
+#Class_code: int
+--
++getId()int
++getName()string
++getDescription()string
++getCode()int
++addClass(Name, Description, Class_code)
++updateClass(Name, Description, Class_code)
++deleteClass()
++assignTeacher(Teacher_name)string
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>280</y><w>360</w><h>220</h></coordinates><panel_attributes>Student
+--
+#id: int
+#Name: string
+#Description: string
+#Class_code: int
+--
++getId()int
++getName()string
++getDescription()string
++getCode()int
++addStudent(Name, Class, Description, Class_code)string
++updateStudent(Name, Class, Description, Class_code)string
++deleteStudent()
++enrolledClass(Class_code)string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>0</y><w>470</w><h>280</h></coordinates><panel_attributes>Teacher
+--
+#id: int
+#Name: string
+
+#Description: string
+#Class_code: int
+
+--
++getId()int
++getName()string
++getDescription()string
++getCode()int
++addTeacher(Name, Class, Description, Class_code)string
++updateTeacher(Name, Class, Description, Class_code)string
++deleteTeacher()
++assignedClasses(Class_code)string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>420</x><y>300</y><w>260</w><h>270</h></coordinates><panel_attributes>Class Roster
+--
+#id: int
+#Name: string
+#Description: string
+#Class_code: int
+#File;
+
+--
++getId()int
++getName()string
++getDescription()string
++getCode()int
++getClass()string
++addRoster(Name, Class, Description, Class_code)string
++updateRoster(Name, Class, Description, Class_code)string
++deleteRoster()
++fileUpload(File)</panel_attributes><additional_attributes></additional_attributes></element></diagram>
