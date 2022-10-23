@@ -14,7 +14,7 @@ class Connection
 
 	public function __construct($host, $database, $user, $password)
 	{
-		$this->dsn = 'mysql:host=%' . $host . ';dbname=pdc10_classes' . $database;
+		$this->dsn = 'mysql:host=localhost' . $host . ';dbname=pdc10_classes' . $database;
 		$this->user = $user;
 		$this->password = $password;
 	}
